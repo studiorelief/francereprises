@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": [],
-  "sourcesContent": [],
-  "mappings": "",
+  "sources": ["../src/utils/animations/hover-animations.css"],
+  "sourcesContent": ["/* Team Cards */\n\n.team_cards_social-wrapper {\n  transition: color 0.2s ease-out;\n}\n\n.home_team_cards.is-team:hover .team_cards_social-wrapper {\n  color: var(--_brand---text--brand-light);\n}\n\n/* Dashboard - Account */\n\n.dashboard_cards_icon {\n  transition: transform 0.2s ease-out;\n}\n\n.dashboard_cards:hover .dashboard_cards_icon {\n  transform: translateX(50%);\n}\n"],
+  "mappings": ";AAEA,CAAC;AACC,cAAY,MAAM,KAAK;AACzB;AAEA,CAAC,eAAe,CAAC,OAAO,OAAO,CAJ9B;AAKC,SAAO,IAAI;AACb;AAIA,CAAC;AACC,cAAY,UAAU,KAAK;AAC7B;AAEA,CAAC,eAAe,OAAO,CAJtB;AAKC,aAAW,WAAW;AACxB;",
   "names": []
 }

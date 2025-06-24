@@ -8,35 +8,15 @@ export function svgComponent() {
   });
 }
 
-export function fadeInMenu() {
-  const menuWrapper = document.querySelector('.p-structure_menu-sticky') as HTMLElement;
-  if (menuWrapper) {
-    menuWrapper.style.opacity = '0';
-    menuWrapper.style.transition = 'opacity 0.2s ease-out';
-    menuWrapper.style.opacity = '1';
-  }
-}
-
-export function handleNavBackground() {
-  const menuButton = document.querySelector('.navbar_menu-button') as HTMLElement;
-  const mobileBackground = document.querySelector('.navbar_mobile-background') as HTMLElement;
-
-  if (menuButton && mobileBackground) {
-    const observer = new MutationObserver(() => {
-      if (menuButton.classList.contains('w--open')) {
-        mobileBackground.style.display = 'flex';
-        mobileBackground.style.opacity = '0.5';
-      } else {
-        mobileBackground.style.opacity = '0';
-        setTimeout(() => {
-          mobileBackground.style.display = 'none';
-        }, 200);
+/* handle target="_blank" links to open in new tab */
+export function componentNewTabs() {
+  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      if (href) {
+        window.open(href, '_blank');
       }
     });
-
-    observer.observe(menuButton, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-  }
+  });
 }

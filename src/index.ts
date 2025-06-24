@@ -2,7 +2,7 @@ import './index.css';
 
 import { loadScript } from '$utils/global/loadScript';
 import { initMarker } from '$utils/global/marker';
-import { svgComponent } from '$utils/global/tricks';
+import { componentNewTabs, svgComponent } from '$utils/global/tricks';
 import { showPassword } from '$utils/memberstack/password/showPassword';
 
 window.Webflow ||= [];
@@ -14,6 +14,7 @@ window.Webflow.push(() => {
 
   // Tricks
   svgComponent();
+  componentNewTabs();
 
   // Attributes V2
   loadScript({

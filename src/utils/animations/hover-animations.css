@@ -1,0 +1,19 @@
+/* Team Cards */
+
+.team_cards_social-wrapper {
+  transition: color 0.2s ease-out;
+}
+
+.home_team_cards.is-team:hover .team_cards_social-wrapper {
+  color: var(--_brand---text--brand-light);
+}
+
+/* Dashboard - Account */
+
+.dashboard_cards_icon {
+  transition: transform 0.2s ease-out;
+}
+
+.dashboard_cards:hover .dashboard_cards_icon {
+  transform: translateX(50%);
+}
