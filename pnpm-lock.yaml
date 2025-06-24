@@ -11,6 +11,9 @@ importers:
       '@finsweet/ts-utils':
         specifier: ^0.40.0
         version: 0.40.0
+      '@marker.io/browser':
+        specifier: ^0.20.2
+        version: 0.20.2
     devDependencies:
       '@changesets/changelog-git':
         specifier: ^0.2.0
@@ -348,6 +351,9 @@ packages:
 
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
+
+  '@marker.io/browser@0.20.2':
+    resolution: {integrity: sha512-rayC9s9ERzKMyjMkfvqKBCSqSVKPQad9F4NvZraGK6yd+mJZfY3C3cPFe89s4Uu9TUvfNm1cR7YfSgdvc/dyvg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1360,6 +1366,8 @@ snapshots:
       fs-extra: 8.1.0
       globby: 11.1.0
       read-yaml-file: 1.1.0
+
+  '@marker.io/browser@0.20.2': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

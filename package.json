@@ -1,13 +1,13 @@
 {
-  "name": "@finsweet/developer-starter",
-  "version": "0.0.0",
-  "description": "Developer starter template for Finsweet projects.",
-  "homepage": "https://github.com/finsweet/developer-starter#readme",
+  "name": "@studiorelief/francereprises",
+  "version": "1.0.0",
+  "description": "Beta France Reprises",
+  "homepage": "https://github.com/studiorelief/francereprises#readme",
   "license": "ISC",
   "keywords": [],
   "author": {
-    "name": "Finsweet",
-    "url": "https://finsweet.com/"
+    "name": "Studio Relief",
+    "url": "https://www.studiorelief.fr/"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,8 @@
     "typescript-eslint": "^8.23.0"
   },
   "dependencies": {
-    "@finsweet/ts-utils": "^0.40.0"
+    "@finsweet/ts-utils": "^0.40.0",
+    "@marker.io/browser": "^0.20.2"
   },
   "engines": {
     "pnpm": ">=10"
