@@ -1,5 +1,6 @@
 import './index.css';
 
+import { popupPremium } from '$utils/animations/popupPremium';
 import { loadScript } from '$utils/global/loadScript';
 import { initMarker } from '$utils/global/marker';
 import { componentNewTabs, svgComponent } from '$utils/global/tricks';
@@ -28,5 +29,9 @@ window.Webflow.push(() => {
     type: 'module',
   });
 
+  // Memberstack
   showPassword();
+
+  // Dashboard
+  popupPremium();
 });
