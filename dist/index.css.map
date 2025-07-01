@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../src/utils/animations/hover-animations.css"],
-  "sourcesContent": ["/* Team Cards */\n\n.team_cards_social-wrapper {\n  transition: color 0.2s ease-out;\n}\n\n.home_team_cards.is-team:hover .team_cards_social-wrapper {\n  color: var(--_brand---text--brand-light);\n}\n\n/* Dashboard - Account */\n\n.dashboard_cards_icon {\n  transition: transform 0.2s ease-out;\n}\n\n.dashboard_cards:hover .dashboard_cards_icon {\n  transform: translateX(50%);\n}\n"],
-  "mappings": ";AAEA,CAAC;AACC,cAAY,MAAM,KAAK;AACzB;AAEA,CAAC,eAAe,CAAC,OAAO,OAAO,CAJ9B;AAKC,SAAO,IAAI;AACb;AAIA,CAAC;AACC,cAAY,UAAU,KAAK;AAC7B;AAEA,CAAC,eAAe,OAAO,CAJtB;AAKC,aAAW,WAAW;AACxB;",
+  "sources": ["../src/utils/animations/hover-animations.css", "../src/utils/animations/hover-button-premium.css"],
+  "sourcesContent": ["/* Team Cards */\n\n.team_cards_social-wrapper {\n  transition: color 0.2s ease-out;\n}\n\n.home_team_cards.is-team:hover .team_cards_social-wrapper {\n  color: var(--_brand---text--brand-light);\n}\n\n/* Dashboard - Account */\n\n.dashboard_cards_icon {\n  transition: transform 0.2s ease-out;\n}\n\n.dashboard_cards:hover .dashboard_cards_icon {\n  transform: translateX(50%);\n}\n", "/* button freemium to premium */\n\n[trigger='popup-premium']:hover\n  [data-wf--cc---global-button--mode-button---variables='is-tertiary'] {\n  background-color: rgba(5, 123, 242, 0.07);\n  color: var(--swatch--dark-blue-500);\n}\n\n[trigger='popup-premium']\n  [data-wf--cc---global-button--mode-button---variables='is-tertiary']\n  .button-icon {\n  background-color: transparent;\n}\n"],
+  "mappings": ";AAEA,CAAC;AACC,cAAY,MAAM,KAAK;AACzB;AAEA,CAAC,eAAe,CAAC,OAAO,OAAO,CAJ9B;AAKC,SAAO,IAAI;AACb;AAIA,CAAC;AACC,cAAY,UAAU,KAAK;AAC7B;AAEA,CAAC,eAAe,OAAO,CAJtB;AAKC,aAAW,WAAW;AACxB;;;;;AChBA,CAAC,sBAAwB,OACvB,CAAC;AACD,oBAAkB,KAAK,CAAC,EAAE,GAAG,EAAE,GAAG,EAAE;AACpC,SAAO,IAAI;AACb;AAEA,CAAC,uBACC,CAAC,kEACD,CAAC;AACD,oBAAkB;AACpB;",
   "names": []
 }

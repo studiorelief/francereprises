@@ -1,0 +1,13 @@
+/* button freemium to premium */
+
+[trigger='popup-premium']:hover
+  [data-wf--cc---global-button--mode-button---variables='is-tertiary'] {
+  background-color: rgba(5, 123, 242, 0.07);
+  color: var(--swatch--dark-blue-500);
+}
+
+[trigger='popup-premium']
+  [data-wf--cc---global-button--mode-button---variables='is-tertiary']
+  .button-icon {
+  background-color: transparent;
+}
