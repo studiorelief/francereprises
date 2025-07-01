@@ -1,9 +1,10 @@
 import './index.css';
 
+import { navbarAnimation } from '$utils/animations/navbarAnimation';
 import { popupPremium } from '$utils/animations/popupPremium';
 import { loadScript } from '$utils/global/loadScript';
 import { initMarker } from '$utils/global/marker';
-import { componentNewTabs, svgComponent } from '$utils/global/tricks';
+import { componentNewTabs, svgComponent, textBrand } from '$utils/global/tricks';
 import { showPassword } from '$utils/memberstack/password/showPassword';
 
 window.Webflow ||= [];
@@ -13,9 +14,13 @@ window.Webflow.push(() => {
     initMarker();
   }
 
+  // Global
+  navbarAnimation();
+
   // Tricks
   svgComponent();
   componentNewTabs();
+  textBrand();
 
   // Attributes V2
   loadScript({

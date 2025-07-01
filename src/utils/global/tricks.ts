@@ -20,3 +20,16 @@ export function componentNewTabs() {
     });
   });
 }
+
+/* apply text-color-brand class to text between asterisks in elements with text="brand-style" */
+export function textBrand() {
+  document.querySelectorAll('[text="brand-style"]').forEach((element) => {
+    const content = element.innerHTML;
+    // Replace text between asterisks with span having text-color-brand class
+    const updatedContent = content.replace(
+      /\*([^*]+)\*/g,
+      '<span class="text-color-brand">$1</span>'
+    );
+    element.innerHTML = updatedContent;
+  });
+}
