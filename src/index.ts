@@ -4,6 +4,7 @@ import { navbarAnimation } from '$utils/animations/navbarAnimation';
 import { popupPremium } from '$utils/animations/popupPremium';
 import { loadScript } from '$utils/global/loadScript';
 import { initMarker } from '$utils/global/marker';
+import { popupNewsletter } from '$utils/global/popupNewsletter';
 import { componentNewTabs, svgComponent, textBrand } from '$utils/global/tricks';
 import { showPassword } from '$utils/memberstack/password/showPassword';
 
@@ -16,6 +17,7 @@ window.Webflow.push(() => {
 
   // Global
   navbarAnimation();
+  popupNewsletter();
 
   // Tricks
   svgComponent();
