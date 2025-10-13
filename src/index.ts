@@ -1,5 +1,6 @@
 import './index.css';
 
+import { eventFilters } from '$utils/animations/eventFilters';
 import { navbarAnimation } from '$utils/animations/navbarAnimation';
 import { popupPremium } from '$utils/animations/popupPremium';
 import { loadScript } from '$utils/global/loadScript';
@@ -19,6 +20,11 @@ window.Webflow.push(() => {
   navbarAnimation();
   popupNewsletter();
 
+  // Événements Filters
+  setTimeout(() => {
+    eventFilters();
+  }, 500);
+
   // Tricks
   svgComponent();
   componentNewTabs();
@@ -33,6 +39,11 @@ window.Webflow.push(() => {
 
   loadScript({
     src: 'https://cdn.jsdelivr.net/npm/@finsweet/attributes-accordion@1/accordion.js',
+    type: 'module',
+  });
+
+  loadScript({
+    src: 'https://cdn.jsdelivr.net/npm/@finsweet/attributes-inputactive@1/inputactive.js',
     type: 'module',
   });
 
