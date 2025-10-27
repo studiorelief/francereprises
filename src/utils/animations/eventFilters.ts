@@ -4,6 +4,7 @@
 const SELECTORS = {
   COLLECTION_LIST: '.event_hub_collection-list',
   DATE_ELEMENT: '.event_hub_cards-date-referal',
+  DATE_FULL_ELEMENT: '#date-full',
   COLLECTION_ITEM: '.event_hub_collection-item',
   DATE_FIELD: '.event_hub_filters-date-field',
   TYPE_FIELD: '.event_hub_filters-type-field',
@@ -95,6 +96,30 @@ export function eventFilters() {
     }
 
     return parsedDate;
+  }
+
+  /**
+   * Récupère la date complète (avec heure) d'un item depuis l'élément DOM
+   * @param item - L'élément HTML de l'item
+   * @returns La date parsée ou null si non trouvée
+   */
+  function getFullDateFromItem(item: HTMLElement): Date | null {
+    const dateFullElement = item.querySelector(SELECTORS.DATE_FULL_ELEMENT);
+
+    // Si on trouve l'élément #date-full, on l'utilise
+    if (dateFullElement) {
+      const dateString = dateFullElement.textContent?.trim() || '';
+      if (dateString) {
+        // Essayer de parser comme ISO date avec heure
+        const parsedDate = new Date(dateString);
+        if (!isNaN(parsedDate.getTime())) {
+          return parsedDate;
+        }
+      }
+    }
+
+    // Sinon, utiliser la date simple sans heure
+    return getDateFromItem(item);
   }
 
   /**
@@ -298,13 +323,41 @@ export function eventFilters() {
   }
 
   /**
+   * Vérifie si une date est dans le futur (en tenant compte de l'heure)
+   * @param itemDate - La date à vérifier
+   * @returns true si la date est dans le futur, false sinon
+   */
+  function isFutureEvent(itemDate: Date): boolean {
+    try {
+      const currentDate = new Date();
+
+      // Vérifier que la date est valide
+      if (isNaN(itemDate.getTime())) {
+        console.error('Date invalide pour vérification futur:', itemDate);
+        return false;
+      }
+
+      // Comparer les dates avec leur heure complète
+      return itemDate.getTime() > currentDate.getTime();
+    } catch (error) {
+      console.error('Erreur lors de la vérification si événement futur:', error);
+      return false;
+    }
+  }
+
+  /**
    * Vérifie si un item passe le filtre de type actif
    * @param item - L'élément HTML de l'item à vérifier
    * @returns true si l'item passe le filtre de type, false sinon
    */
   function passesTypeFilter(item: HTMLElement): boolean {
     if (activeTypeFilter === 'all') {
-      return true;
+      // Pour le filtre "all", on vérifie que l'événement n'est pas passé
+      const fullDate = getFullDateFromItem(item);
+      if (!fullDate) {
+        return false;
+      }
+      return isFutureEvent(fullDate);
     }
 
     // Pour le filtre "past", on utilise la logique de date
@@ -319,7 +372,7 @@ export function eventFilters() {
       return isPast;
     }
 
-    // Pour les autres filtres, on utilise la logique DOM existante
+    // Pour les autres filtres (webinar, physique, premium), on vérifie le type ET que l'événement n'est pas passé
     let typeElement: Element | null = null;
 
     if (activeTypeFilter === 'webinar') {
@@ -330,14 +383,22 @@ export function eventFilters() {
       typeElement = item.querySelector(SELECTORS.FILTER_TYPE_PREMIUM);
     }
 
+    // L'item passe le filtre si l'élément de type correspondant existe ET n'est pas invisible
+    const passesTypeCheck =
+      typeElement !== null && !typeElement.classList.contains('w-condition-invisible');
+
+    // Vérifier aussi que l'événement n'est pas passé
+    const fullDate = getFullDateFromItem(item);
+    const passesDateCheck = fullDate ? isFutureEvent(fullDate) : false;
+
+    const passes = passesTypeCheck && passesDateCheck;
+
     // Debug : log pour voir ce qui se passe
     console.error(`Filtre actif: ${activeTypeFilter}, Élément trouvé:`, typeElement);
-
-    // L'item passe le filtre si l'élément de type correspondant existe ET n'est pas invisible
-    const passes = typeElement !== null && !typeElement.classList.contains('w-condition-invisible');
     console.error(
-      `Item passe le filtre de type: ${passes} (élément trouvé: ${typeElement !== null}, visible: ${typeElement ? !typeElement.classList.contains('w-condition-invisible') : 'N/A'})`
+      `Item passe le filtre de type: ${passes} (type: ${passesTypeCheck}, futur: ${passesDateCheck})`
     );
+
     return passes;
   }
 
